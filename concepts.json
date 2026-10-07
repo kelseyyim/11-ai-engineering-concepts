@@ -1,0 +1,290 @@
+[
+  {
+    "id": 1,
+    "group": "Foundations",
+    "slug": "llm-mental-models",
+    "title": "LLM mental models",
+    "summary": "Separate the probabilistic model from the deterministic application around it.",
+    "path": "concepts/01-llm-mental-models.md"
+  },
+  {
+    "id": 2,
+    "group": "Foundations",
+    "slug": "tokens-and-context",
+    "title": "Tokens and context windows",
+    "summary": "Budget the entire request, reserve output space, and make truncation visible.",
+    "path": "concepts/02-tokens-and-context.md"
+  },
+  {
+    "id": 3,
+    "group": "Foundations",
+    "slug": "model-selection",
+    "title": "Model selection and capability checks",
+    "summary": "Choose against a task-specific evaluation and explicit operating constraints.",
+    "path": "concepts/03-model-selection.md"
+  },
+  {
+    "id": 4,
+    "group": "Foundations",
+    "slug": "sampling-and-reproducibility",
+    "title": "Sampling and reproducibility",
+    "summary": "Understand decoding controls without mistaking a seed for a guarantee.",
+    "path": "concepts/04-sampling-and-reproducibility.md"
+  },
+  {
+    "id": 5,
+    "group": "Foundations",
+    "slug": "prompting-and-instructions",
+    "title": "Prompting and instruction design",
+    "summary": "Turn a vague request into a testable input, output, and failure contract.",
+    "path": "concepts/05-prompting-and-instructions.md"
+  },
+  {
+    "id": 6,
+    "group": "Foundations",
+    "slug": "structured-outputs",
+    "title": "Structured outputs and validation",
+    "summary": "Treat generated JSON as untrusted input that still needs semantic validation.",
+    "path": "concepts/06-structured-outputs.md"
+  },
+  {
+    "id": 7,
+    "group": "Running models",
+    "slug": "local-models-ollama",
+    "title": "Local models with Ollama",
+    "summary": "Run a local model deliberately, with an explicit network and resource boundary.",
+    "path": "concepts/07-local-models-ollama.md"
+  },
+  {
+    "id": 8,
+    "group": "Running models",
+    "slug": "model-artifacts-quantization",
+    "title": "Model artifacts and quantization",
+    "summary": "Understand weights, tokenizers, templates, licenses, and memory tradeoffs.",
+    "path": "concepts/08-model-artifacts-quantization.md"
+  },
+  {
+    "id": 9,
+    "group": "Running models",
+    "slug": "provider-apis",
+    "title": "Provider APIs and adapters",
+    "summary": "Normalize only the capabilities you actually support and test.",
+    "path": "concepts/09-provider-apis.md"
+  },
+  {
+    "id": 10,
+    "group": "Running models",
+    "slug": "amazon-bedrock",
+    "title": "Amazon Bedrock and IAM",
+    "summary": "Use managed inference with explicit model, Region, identity, and billing choices.",
+    "path": "concepts/10-amazon-bedrock.md"
+  },
+  {
+    "id": 11,
+    "group": "Running models",
+    "slug": "streaming-and-cancellation",
+    "title": "Streaming and cancellation",
+    "summary": "Handle partial output, terminal events, timeouts, and user cancellation.",
+    "path": "concepts/11-streaming-and-cancellation.md"
+  },
+  {
+    "id": 12,
+    "group": "Running models",
+    "slug": "latency-caching-batching",
+    "title": "Latency, caching, and batching",
+    "summary": "Optimize a measured bottleneck without hiding stale or cross-tenant results.",
+    "path": "concepts/12-latency-caching-batching.md"
+  },
+  {
+    "id": 13,
+    "group": "Context and retrieval",
+    "slug": "context-engineering",
+    "title": "Context engineering",
+    "summary": "Build the smallest sufficient, trustworthy context for each model call.",
+    "path": "concepts/13-context-engineering.md"
+  },
+  {
+    "id": 14,
+    "group": "Context and retrieval",
+    "slug": "embeddings-and-similarity",
+    "title": "Embeddings and similarity",
+    "summary": "Choose representations and distance metrics for the retrieval task.",
+    "path": "concepts/14-embeddings-and-similarity.md"
+  },
+  {
+    "id": 15,
+    "group": "Context and retrieval",
+    "slug": "chunking-and-indexing",
+    "title": "Chunking and indexing",
+    "summary": "Preserve source identity, access rules, and freshness through ingestion.",
+    "path": "concepts/15-chunking-and-indexing.md"
+  },
+  {
+    "id": 16,
+    "group": "Context and retrieval",
+    "slug": "retrieval-and-reranking",
+    "title": "Retrieval and reranking",
+    "summary": "Measure candidate recall before asking a generator to answer.",
+    "path": "concepts/16-retrieval-and-reranking.md"
+  },
+  {
+    "id": 17,
+    "group": "Context and retrieval",
+    "slug": "grounded-generation",
+    "title": "Grounded generation and citations",
+    "summary": "Connect every supported claim to evidence and make abstention useful.",
+    "path": "concepts/17-grounded-generation.md"
+  },
+  {
+    "id": 18,
+    "group": "Context and retrieval",
+    "slug": "state-and-memory",
+    "title": "State and memory",
+    "summary": "Separate request context, durable workflow state, and user-specific memory.",
+    "path": "concepts/18-state-and-memory.md"
+  },
+  {
+    "id": 19,
+    "group": "Orchestration",
+    "slug": "workflows-and-agents",
+    "title": "Workflows versus agents",
+    "summary": "Pick the simplest control flow that can complete the job reliably.",
+    "path": "concepts/19-workflows-and-agents.md"
+  },
+  {
+    "id": 20,
+    "group": "Orchestration",
+    "slug": "tool-calling",
+    "title": "Tool calling and contracts",
+    "summary": "Validate model proposals before executing scoped application code.",
+    "path": "concepts/20-tool-calling.md"
+  },
+  {
+    "id": 21,
+    "group": "Orchestration",
+    "slug": "mcp",
+    "title": "Model Context Protocol (MCP)",
+    "summary": "Connect tools and resources through a protocol without confusing it with permission.",
+    "path": "concepts/21-mcp.md"
+  },
+  {
+    "id": 22,
+    "group": "Orchestration",
+    "slug": "routing-and-fallbacks",
+    "title": "Routing and fallbacks",
+    "summary": "Make quality, cost, capability, and privacy constraints explicit at every route.",
+    "path": "concepts/22-routing-and-fallbacks.md"
+  },
+  {
+    "id": 23,
+    "group": "Orchestration",
+    "slug": "durable-execution",
+    "title": "Durable execution and human approval",
+    "summary": "Resume safely after failures and approvals without repeating side effects.",
+    "path": "concepts/23-durable-execution.md"
+  },
+  {
+    "id": 24,
+    "group": "Orchestration",
+    "slug": "multi-agent-systems",
+    "title": "Multi-agent systems",
+    "summary": "Justify delegation with measurable gains and bounded coordination costs.",
+    "path": "concepts/24-multi-agent-systems.md"
+  },
+  {
+    "id": 25,
+    "group": "Quality and safety",
+    "slug": "evals-and-golden-datasets",
+    "title": "Evaluations and golden datasets",
+    "summary": "Define success on representative cases before changing models or prompts.",
+    "path": "concepts/25-evals-and-golden-datasets.md"
+  },
+  {
+    "id": 26,
+    "group": "Quality and safety",
+    "slug": "retrieval-and-agent-evaluation",
+    "title": "Retrieval and agent evaluation",
+    "summary": "Score evidence retrieval, final outcomes, and unsafe actions separately.",
+    "path": "concepts/26-retrieval-and-agent-evaluation.md"
+  },
+  {
+    "id": 27,
+    "group": "Quality and safety",
+    "slug": "testing-and-ci",
+    "title": "Testing and CI for AI systems",
+    "summary": "Keep deterministic contract tests separate from probabilistic model evaluations.",
+    "path": "concepts/27-testing-and-ci.md"
+  },
+  {
+    "id": 28,
+    "group": "Quality and safety",
+    "slug": "observability",
+    "title": "Observability and tracing",
+    "summary": "Explain a failed run without turning telemetry into a sensitive-data dump.",
+    "path": "concepts/28-observability.md"
+  },
+  {
+    "id": 29,
+    "group": "Quality and safety",
+    "slug": "prompt-injection",
+    "title": "Prompt injection and untrusted data",
+    "summary": "Keep retrieved content and tool output from becoming authority.",
+    "path": "concepts/29-prompt-injection.md"
+  },
+  {
+    "id": 30,
+    "group": "Quality and safety",
+    "slug": "permissions-and-sandboxing",
+    "title": "Permissions and sandboxing",
+    "summary": "Enforce least privilege outside the model, at the actual execution boundary.",
+    "path": "concepts/30-permissions-and-sandboxing.md"
+  },
+  {
+    "id": 31,
+    "group": "Shipping and operating",
+    "slug": "privacy-data-governance",
+    "title": "Privacy and data governance",
+    "summary": "Track where information travels, who can access it, and when it is deleted.",
+    "path": "concepts/31-privacy-data-governance.md"
+  },
+  {
+    "id": 32,
+    "group": "Shipping and operating",
+    "slug": "reliability-and-error-handling",
+    "title": "Reliability and error handling",
+    "summary": "Bound retries and distinguish failed work from an unknown outcome.",
+    "path": "concepts/32-reliability-and-error-handling.md"
+  },
+  {
+    "id": 33,
+    "group": "Shipping and operating",
+    "slug": "cost-and-capacity",
+    "title": "Cost, quotas, and capacity",
+    "summary": "Budget complete workflows, including retries, tools, and operational overhead.",
+    "path": "concepts/33-cost-and-capacity.md"
+  },
+  {
+    "id": 34,
+    "group": "Shipping and operating",
+    "slug": "fine-tuning-and-adaptation",
+    "title": "Fine-tuning and adaptation",
+    "summary": "Change weights only when prompting and retrieval do not solve the measured problem.",
+    "path": "concepts/34-fine-tuning-and-adaptation.md"
+  },
+  {
+    "id": 35,
+    "group": "Shipping and operating",
+    "slug": "ai-assisted-development",
+    "title": "AI-assisted software development",
+    "summary": "Use coding assistants with reviewable scope, independent tests, and clear authority.",
+    "path": "concepts/35-ai-assisted-development.md"
+  },
+  {
+    "id": 36,
+    "group": "Shipping and operating",
+    "slug": "deployment-and-lifecycle",
+    "title": "Deployment and model lifecycle",
+    "summary": "Version the whole system and rehearse both rollout and rollback.",
+    "path": "concepts/36-deployment-and-lifecycle.md"
+  }
+]

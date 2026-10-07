@@ -1,0 +1,23 @@
+name: Validate guide
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7, reviewed 2026-10-07
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6, reviewed 2026-10-07
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Offline tests, content, links, and examples
+        run: python3 scripts/validate.py
