@@ -196,4 +196,5 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 
 ## Contributors
 
-- [Kelsey Yim](https://github.com/kelseyyim)
+| [<img src="https://avatars.githubusercontent.com/u/32113193?v=4" width="100" alt="Kelsey Yim"/><br /><sub><b>Kelsey Yim</b></sub>](https://github.com/kelseyyim) |
+| :---: |
