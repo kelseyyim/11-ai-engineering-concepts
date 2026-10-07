@@ -1,53 +1,65 @@
 #!/usr/bin/env python3
-"""Check README resource count, numbering, duplicates, and local links (offline)."""
+"""Check README resource count, topic anchors, and duplicate URLs (offline)."""
 from pathlib import Path
 import re
 from urllib.parse import urldefrag, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-RESOURCE = re.compile(r'^(\d+)\. \[([^\]]+)\]\((https://[^\s)]+)\) — (\S.*)$')
-TITLE = re.compile(r'^# (\d+) Essential AI Engineering Resources$')
+RESOURCE = re.compile(r'^- [📜🎥] \[([^\]]+)\]\((https://[^\s)]+)\)$')
+TITLE = re.compile(r'^# (\d+) AI Engineering Resources$')
+
+
+def slug(text):
+    return re.sub(r'[^\w\s-]', '', text.lower()).replace(' ', '-')
 
 
 def validate(text, root=ROOT):
-    errors, resources = [], []
+    errors, resources, headings = [], [], set()
     lines = text.splitlines()
     title = TITLE.fullmatch(lines[0]) if lines else None
     for line in lines:
-        if not re.match(r'^\d+\. ', line):
+        if match := re.match(r'^#{1,6} (.+)$', line):
+            headings.add(slug(match.group(1)))
+        if not line.startswith(('- 📜', '- 🎥')):
             continue
         match = RESOURCE.fullmatch(line)
         if not match:
             errors.append(f'Malformed resource entry: {line}')
         else:
-            resources.append(match.groups())
-    urls = [urldefrag(entry[2])[0] for entry in resources]
+            resources.append(match.group(2))
+            if line.startswith('- 🎥') and urlsplit(match.group(2)).hostname != 'www.youtube.com':
+                errors.append('Video resources must use a verified YouTube URL.')
+    urls = [urldefrag(url)[0] for url in resources]
     if not resources:
         errors.append('The resource list is empty.')
     if not title or int(title.group(1)) != len(set(urls)):
-        errors.append('Title must count the unique numbered learning-resource URLs.')
-    if [int(entry[0]) for entry in resources] != list(range(1, len(resources) + 1)):
-        errors.append('Resource numbering must be consecutive.')
+        errors.append('Title must count the unique article and video URLs.')
     if len(urls) != len(set(urls)):
         errors.append('Duplicate learning-resource URL.')
-    for url in urls:
-        try:
-            parsed = urlsplit(url)
-            valid = parsed.hostname and not parsed.username and not parsed.password and parsed.port in (None, 443)
-        except ValueError:
-            valid = False
-        if not valid:
-            errors.append(f'Invalid public HTTPS URL: {url}')
     for link in re.findall(r'\]\(([^)]+)\)', text):
-        if urlsplit(link).scheme or link.startswith('#'):
-            continue
-        target = (root / urldefrag(link)[0]).resolve()
-        if not target.is_relative_to(root.resolve()) or not target.is_file():
-            errors.append(f'Missing or out-of-repository local link: {link}')
+        if link.startswith('#'):
+            if link[1:] not in headings:
+                errors.append(f'Missing topic anchor: {link}')
+        elif urlsplit(link).scheme:
+            try:
+                parsed = urlsplit(link)
+                valid = (parsed.scheme == 'https' and parsed.hostname and not parsed.username
+                         and not parsed.password and parsed.port in (None, 443))
+            except ValueError:
+                valid = False
+            if not valid:
+                errors.append(f'Invalid public HTTPS URL: {link}')
+        else:
+            target = (root / urldefrag(link)[0]).resolve()
+            if not target.is_relative_to(root.resolve()) or not target.is_file():
+                errors.append(f'Missing or out-of-repository local link: {link}')
+    for section in ('Introduction', 'Community', 'Table of Contents', 'Contributors'):
+        if f'## {section}' not in text:
+            errors.append(f'Missing section: {section}')
     return errors, len(resources)
 
 
 if __name__ == '__main__':
     errors, count = validate((ROOT / 'README.md').read_text())
-    print('\n'.join(errors) if errors else f'{count} unique resources; title, numbering, and local links passed.')
+    print('\n'.join(errors) if errors else f'{count} unique resources; title, topic anchors, and links passed.')
     raise SystemExit(bool(errors))

@@ -1,72 +1,199 @@
-# 32 Essential AI Engineering Resources
+# 44 AI Engineering Resources
 
-A focused reading list for building, evaluating, and operating LLM applications.
+## Introduction
 
-## LLM foundations
+This repository helps developers learn the core concepts behind AI engineering and build reliable applications with language models. Use it as a guide for further study.
 
-1. [Text generation — Hugging Face](https://huggingface.co/docs/transformers/llm_tutorial) — Follow tokenization, generation, decoding settings, and common inference mistakes.
-2. [Byte-pair encoding — Hugging Face](https://huggingface.co/learn/llm-course/en/chapter6/5) — Work through tokenization with a complete, small Python implementation.
+## Community
 
-## Prompts and context
+Contributions are welcome. Submit a pull request with a useful article, YouTube tutorial, or correction. If you would like to translate this list into your language, you are welcome to contribute a translation.
 
-3. [Prompting best practices — Anthropic](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices) — Learn instruction design, examples, and output constraints; check the model-specific guidance.
-4. [Context engineering — Anthropic](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) — Choose, retrieve, and compact the information supplied to an agent.
-5. [Chat templates — Hugging Face](https://huggingface.co/docs/transformers/en/chat_templating) — Understand how message roles become model-specific token sequences.
+---
 
-## Structured outputs
+## Table of Contents
 
-6. [Structured model outputs — OpenAI](https://developers.openai.com/api/docs/guides/structured-outputs) — Use schemas and typed SDK outputs, including refusals and schema limitations.
-7. [Object validation — JSON Schema](https://json-schema.org/understanding-json-schema/reference/object) — Learn properties, required fields, and extra-field validation through worked examples.
+### Foundations
 
-## Running models: Ollama and Bedrock
+1. **[LLM foundations](#1-llm-foundations)**
+2. **[Prompts and context](#2-prompts-and-context)**
+3. **[Structured outputs](#3-structured-outputs)**
 
-8. [Local model commands — Ollama](https://docs.ollama.com/cli) — Download, run, inspect, and stop models from the command line.
-9. [Chat API — Ollama](https://docs.ollama.com/api/chat) — Make a local chat request and understand its messages, options, and response fields.
-10. [Streaming responses — Ollama](https://docs.ollama.com/api/streaming) — Read newline-delimited output and choose streaming or complete responses.
-11. [Converse API tutorial — Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html) — Build managed model calls, preserve conversation context, and read streaming responses.
+### Building applications
 
-## Retrieval-augmented generation
+4. **[Running models: Ollama and Bedrock](#4-running-models-ollama-and-bedrock)**
+5. **[Retrieval-augmented generation](#5-retrieval-augmented-generation)**
+6. **[Tools and MCP](#6-tools-and-mcp)**
+7. **[Workflows and agents](#7-workflows-and-agents)**
 
-12. [Semantic search — Sentence Transformers](https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html) — Implement query/document embeddings and similarity search.
-13. [Chunking strategies — Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-chunking.html) — Compare fixed-size, hierarchical, and semantic document splitting.
-14. [Retrieve and rerank — Sentence Transformers](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html) — Combine fast candidate retrieval with a cross-encoder reranker.
-15. [Grounded answers and citations — Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-retrieve-generate.html) — Connect retrieved passages to generated answers and inspect their source references.
+### Production
 
-## Tools and MCP
+8. **[Evaluation](#8-evaluation)**
+9. **[Security and privacy](#9-security-and-privacy)**
+10. **[Reliability and observability](#10-reliability-and-observability)**
+11. **[Deployment and efficiency](#11-deployment-and-efficiency)**
 
-16. [Writing effective tools — Anthropic](https://www.anthropic.com/engineering/writing-tools-for-agents) — Design clear tool interfaces and evaluate them on realistic tasks.
-17. [Tool-use round trip — Anthropic](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview) — Implement the model request, application execution, and tool-result cycle.
-18. [Build an MCP server — Model Context Protocol](https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server) — Implement, connect, and test a tool server using the documented SDK version.
-19. [MCP security — Model Context Protocol](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices) — Understand token misuse, confused deputies, and server trust boundaries.
+---
 
-## Workflows and agents
+# Foundations
 
-20. [Building effective agents — Anthropic](https://www.anthropic.com/engineering/building-effective-agents) — Compare routing, chaining, and agent loops; focus on patterns rather than its older tooling examples.
-21. [Graph API — LangGraph](https://docs.langchain.com/oss/python/langgraph/graph-api) — Build stateful workflows with nodes, edges, reducers, and execution limits.
-22. [Human approval and resume — LangGraph](https://docs.langchain.com/oss/python/langgraph/interrupts) — Pause and resume workflows while handling persistence and repeated side effects.
+## 1. LLM foundations
 
-## Evaluation
+### Articles
 
-23. [Demystifying evals for AI agents — Anthropic](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) — Design datasets, graders, trials, and outcome-based regression evaluations.
+- 📜 [Text generation - Hugging Face](https://huggingface.co/docs/transformers/llm_tutorial)
+- 📜 [Byte-pair encoding - Hugging Face](https://huggingface.co/learn/llm-course/en/chapter6/5)
 
-## Security and privacy
+### Videos
 
-24. [Prompt-injection prevention — OWASP](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html) — Study attacks, layered defenses, and security tests; filters alone are insufficient.
-25. [Authorization — OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) — Enforce least privilege, deny-by-default behavior, and per-request permissions.
-26. [Model data retention — Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html) — Understand model-dependent retention and configuration before sending data.
+- 🎥 [(1hr Talk) Intro to Large Language Models - Andrej Karpathy](https://www.youtube.com/watch?v=zjkBMFhNj_g)
 
-## Reliability and observability
+**[⬆ Back to Top](#table-of-contents)**
 
-27. [Timeouts, retries, backoff, and jitter — AWS Builders’ Library (PDF)](https://d1.awsstatic.com/builderslibrary/pdfs/timeouts-retries-and-backoff-with-jitter.pdf) — Learn retry budgets, idempotence, and how retries can amplify failures.
-28. [Distributed traces — OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/) — Understand spans, parent-child relationships, and context propagation.
-29. [Model invocation logging — Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html) — Configure request logging and understand the prompt/response data it can capture.
+## 2. Prompts and context
 
-## Deployment and efficiency
+### Articles
 
-30. [Model lifecycle — Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html) — Plan for model retirement and migration using the applicable lifecycle policy.
-31. [Prompt caching — Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html) — Learn cache eligibility, prefix matching, expiration, and usage accounting.
-32. [Batch inference jobs — Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-create.html) — Prepare asynchronous inference jobs with S3 inputs, outputs, and bounded execution.
+- 📜 [Prompting best practices - Anthropic](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)
+- 📜 [Context engineering - Anthropic](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- 📜 [Chat templates - Hugging Face](https://huggingface.co/docs/transformers/en/chat_templating)
 
-Content and links reviewed on **2026-10-07**. Match code examples to the documented versions.
+### Videos
 
-Inspired by [36 GraphQL Concepts](https://github.com/Novvum/36-graphql-concepts). [Contributing and source policy](CONTRIBUTING.md).
+- 🎥 [Prompting 101 | Code w/ Claude - Anthropic](https://www.youtube.com/watch?v=ysPbXH0LpIE)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+## 3. Structured outputs
+
+### Articles
+
+- 📜 [Structured model outputs - OpenAI](https://developers.openai.com/api/docs/guides/structured-outputs)
+- 📜 [Object validation - JSON Schema](https://json-schema.org/understanding-json-schema/reference/object)
+
+### Videos
+
+- 🎥 [OpenAI DevDay 2024 | Structured outputs for reliable applications - OpenAI](https://www.youtube.com/watch?v=kE4BkATIl9c)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+# Building applications
+
+## 4. Running models: Ollama and Bedrock
+
+### Articles
+
+- 📜 [Local model commands - Ollama](https://docs.ollama.com/cli)
+- 📜 [Chat API - Ollama](https://docs.ollama.com/api/chat)
+- 📜 [Streaming responses - Ollama](https://docs.ollama.com/api/streaming)
+- 📜 [Converse API tutorial - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html)
+
+### Videos
+
+- 🎥 [4. The Ollama Course - Using the CLI - Matt Williams](https://www.youtube.com/watch?v=luH9j_eOEi4)
+- 🎥 [Amazon Bedrock for Beginners - From First Prompt to AI Agent (Full Tutorial) - AWS Developers](https://www.youtube.com/watch?v=FAgmR9VV0GQ)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+## 5. Retrieval-augmented generation
+
+### Articles
+
+- 📜 [Semantic search - Sentence Transformers](https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html)
+- 📜 [Chunking strategies - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-chunking.html)
+- 📜 [Retrieve and rerank - Sentence Transformers](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)
+- 📜 [Grounded answers and citations - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-retrieve-generate.html)
+
+### Videos
+
+- 🎥 [RAG From Scratch: Part 1 (Overview) - LangChain](https://www.youtube.com/watch?v=wd7TZ4w1mSw)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+## 6. Tools and MCP
+
+### Articles
+
+- 📜 [Writing effective tools - Anthropic](https://www.anthropic.com/engineering/writing-tools-for-agents)
+- 📜 [Tool-use round trip - Anthropic](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)
+- 📜 [Build an MCP server - Model Context Protocol](https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server)
+- 📜 [MCP security - Model Context Protocol](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices)
+
+### Videos
+
+- 🎥 [MCP 201 | Code w/ Claude - Anthropic](https://www.youtube.com/watch?v=HNzH5Us1Rvg)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+## 7. Workflows and agents
+
+### Articles
+
+- 📜 [Building effective agents - Anthropic](https://www.anthropic.com/engineering/building-effective-agents)
+- 📜 [Graph API - LangGraph](https://docs.langchain.com/oss/python/langgraph/graph-api)
+- 📜 [Human approval and resume - LangGraph](https://docs.langchain.com/oss/python/langgraph/interrupts)
+
+### Videos
+
+- 🎥 [Building Effective Agents with LangGraph - LangChain](https://www.youtube.com/watch?v=aHCDrAbH_go)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+# Production
+
+## 8. Evaluation
+
+### Articles
+
+- 📜 [Demystifying evals for AI agents - Anthropic](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
+
+### Videos
+
+- 🎥 [Error Analysis: The Highest ROI Technique In AI Engineering - Hamel Husain](https://www.youtube.com/watch?v=e2i6JbU2R-s)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+## 9. Security and privacy
+
+### Articles
+
+- 📜 [Prompt-injection prevention - OWASP](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
+- 📜 [Authorization - OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
+- 📜 [Model data retention - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html)
+
+### Videos
+
+- 🎥 [Prompt Injection, explained - Simon Willison](https://www.youtube.com/watch?v=FgxwCaL6UTA)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+## 10. Reliability and observability
+
+### Articles
+
+- 📜 [Timeouts, retries, backoff, and jitter - AWS Builders’ Library (PDF)](https://d1.awsstatic.com/builderslibrary/pdfs/timeouts-retries-and-backoff-with-jitter.pdf)
+- 📜 [Distributed traces - OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/)
+- 📜 [Model invocation logging - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html)
+
+### Videos
+
+- 🎥 [Getting Started with LangSmith (1/8): Tracing - LangChain](https://www.youtube.com/watch?v=fA9b4D8IsPQ)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+## 11. Deployment and efficiency
+
+### Articles
+
+- 📜 [Model lifecycle - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html)
+- 📜 [Prompt caching - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html)
+- 📜 [Batch inference jobs - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-create.html)
+
+### Videos
+
+- 🎥 [OpenAI DevDay 2024 | Balancing accuracy, latency, and cost at scale - OpenAI](https://www.youtube.com/watch?v=Bx6sUDRMx-8)
+
+**[⬆ Back to Top](#table-of-contents)**
+
+## Contributors
+
+- [Kelsey Yim](https://github.com/kelseyyim)
