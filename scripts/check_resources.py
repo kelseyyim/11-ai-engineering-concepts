@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Check README resource count, topic anchors, and duplicate URLs (offline)."""
+"""Check README concept count, topic anchors, and duplicate URLs (offline)."""
 from pathlib import Path
 import re
 from urllib.parse import urldefrag, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 RESOURCE = re.compile(r'^- [📜🎥] \[([^\]]+)\]\((https://[^\s)]+)\)$')
-TITLE = re.compile(r'^# (\d+) AI Engineering Resources$')
+TITLE = re.compile(r'^# (\d+) AI Engineering Concepts$')
 
 
 def slug(text):
@@ -32,8 +32,15 @@ def validate(text, root=ROOT):
     urls = [urldefrag(url)[0] for url in resources]
     if not resources:
         errors.append('The resource list is empty.')
-    if not title or int(title.group(1)) != len(set(urls)):
-        errors.append('Title must count the unique article and video URLs.')
+    topics = re.findall(r'^## (\d+)\. (.+)$', text, re.M)
+    if not topics or not title or int(title.group(1)) != len(topics):
+        errors.append('Title must count the numbered concepts, not resource links.')
+    if [int(number) for number, _ in topics] != list(range(1, len(topics) + 1)):
+        errors.append('Concept numbering must be consecutive.')
+    toc = re.findall(r'^(\d+)\. \*\*\[([^\]]+)\]\(#([^)]+)\)\*\*$', text, re.M)
+    expected = [(number, name, slug(number + '. ' + name)) for number, name in topics]
+    if toc != expected:
+        errors.append('Table of contents must match every numbered concept in order.')
     if len(urls) != len(set(urls)):
         errors.append('Duplicate learning-resource URL.')
     for link in re.findall(r'\]\(([^)]+)\)', text):
@@ -61,5 +68,6 @@ def validate(text, root=ROOT):
 
 if __name__ == '__main__':
     errors, count = validate((ROOT / 'README.md').read_text())
-    print('\n'.join(errors) if errors else f'{count} unique resources; title, topic anchors, and links passed.')
+    topics = len(re.findall(r'^## \d+\. ', (ROOT / 'README.md').read_text(), re.M))
+    print('\n'.join(errors) if errors else f'{topics} concepts, {count} unique resources; title, contents, and links passed.')
     raise SystemExit(bool(errors))
