@@ -20,7 +20,7 @@ Tiny fixture suites teach the mechanics but cannot establish production quality.
 
 ## Learn more
 
-- [OpenAI evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices) — Study task-specific cases, scoring, and continuous evaluation; service APIs are provider-specific.
+- [OpenAI evaluation design principles](https://developers.openai.com/api/docs/guides/evaluation-best-practices) — Task-specific cases, scoring, and continuous evaluation; check the page's Evals-platform deprecation notice before adopting its service APIs.
 - [Anthropic: Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) — Distinguish tasks, trials, graders, transcripts, and outcomes.
 
 Resource review: 2026-10-07.

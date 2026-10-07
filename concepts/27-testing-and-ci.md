@@ -21,7 +21,7 @@ A mock passing proves your assumptions are consistent; it does not prove the pro
 ## Learn more
 
 - [Python unittest](https://docs.python.org/3/library/unittest.html) — Use a zero-dependency unit-test runner and deterministic fixtures.
-- [OpenAI evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices) — Study task-specific cases, scoring, and continuous evaluation; service APIs are provider-specific.
+- [OpenAI evaluation design principles](https://developers.openai.com/api/docs/guides/evaluation-best-practices) — Task-specific cases, scoring, and continuous evaluation; check the page's Evals-platform deprecation notice before adopting its service APIs.
 
 Resource review: 2026-10-07.
 

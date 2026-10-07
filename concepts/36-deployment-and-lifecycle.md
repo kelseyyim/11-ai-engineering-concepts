@@ -22,7 +22,7 @@ An unpinned latest tag is not a reproducible release. Rollback may require the o
 ## Learn more
 
 - [Bedrock model lifecycle](https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html) — Check retirement policy for the exact model, including launch-date-dependent policies.
-- [OpenAI evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices) — Study task-specific cases, scoring, and continuous evaluation; service APIs are provider-specific.
+- [OpenAI evaluation design principles](https://developers.openai.com/api/docs/guides/evaluation-best-practices) — Task-specific cases, scoring, and continuous evaluation; check the page's Evals-platform deprecation notice before adopting its service APIs.
 
 Resource review: 2026-10-07.
 

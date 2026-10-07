@@ -1,0 +1,163 @@
+[
+  {
+    "title": "LLM foundations and model selection",
+    "chapters": [
+      1,
+      2,
+      3,
+      4,
+      8
+    ],
+    "resources": [
+      "https://huggingface.co/learn/llm-course/en/chapter1/1",
+      "https://huggingface.co/learn/llm-course/en/chapter6/5",
+      "https://huggingface.co/docs/transformers/main/en/generation_strategies",
+      "https://huggingface.co/docs/hub/model-cards"
+    ]
+  },
+  {
+    "title": "Prompting and context engineering",
+    "chapters": [
+      5,
+      13,
+      18
+    ],
+    "resources": [
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
+      "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "https://huggingface.co/docs/transformers/main/en/chat_templating",
+      "https://docs.langchain.com/oss/python/concepts/memory"
+    ]
+  },
+  {
+    "title": "Model APIs and structured outputs",
+    "chapters": [
+      6,
+      9,
+      11
+    ],
+    "resources": [
+      "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "https://json-schema.org/understanding-json-schema/reference",
+      "https://docs.ollama.com/api/openai-compatibility",
+      "https://docs.ollama.com/api/streaming"
+    ]
+  },
+  {
+    "title": "Local models with Ollama",
+    "chapters": [
+      7
+    ],
+    "resources": [
+      "https://docs.ollama.com/faq",
+      "https://docs.ollama.com/cli",
+      "https://docs.ollama.com/api/chat"
+    ]
+  },
+  {
+    "title": "Amazon Bedrock",
+    "chapters": [
+      10
+    ],
+    "resources": [
+      "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-prereq.html"
+    ]
+  },
+  {
+    "title": "Retrieval-augmented generation (RAG)",
+    "chapters": [
+      14,
+      15,
+      16,
+      17
+    ],
+    "resources": [
+      "https://sbert.net/examples/sentence_transformer/applications/semantic-search/README.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-chunking.html",
+      "https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-retrieve-generate.html"
+    ]
+  },
+  {
+    "title": "Tool calling and MCP",
+    "chapters": [
+      20,
+      21
+    ],
+    "resources": [
+      "https://www.anthropic.com/engineering/writing-tools-for-agents",
+      "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
+      "https://modelcontextprotocol.io/specification/2026-07-28",
+      "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices"
+    ]
+  },
+  {
+    "title": "Workflows and agents",
+    "chapters": [
+      19,
+      22,
+      23,
+      24
+    ],
+    "resources": [
+      "https://www.anthropic.com/engineering/building-effective-agents",
+      "https://docs.langchain.com/oss/python/langgraph/graph-api",
+      "https://docs.langchain.com/oss/python/langgraph/interrupts",
+      "https://docs.temporal.io/activity-definition"
+    ]
+  },
+  {
+    "title": "Evaluation and testing",
+    "chapters": [
+      25,
+      26,
+      27
+    ],
+    "resources": [
+      "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
+      "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+    ]
+  },
+  {
+    "title": "Security and privacy",
+    "chapters": [
+      29,
+      30,
+      31
+    ],
+    "resources": [
+      "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html",
+      "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/data-protection.html"
+    ]
+  },
+  {
+    "title": "Reliability and observability",
+    "chapters": [
+      28,
+      32
+    ],
+    "resources": [
+      "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+      "https://opentelemetry.io/docs/concepts/signals/traces/",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html"
+    ]
+  },
+  {
+    "title": "Deployment, performance, and cost",
+    "chapters": [
+      12,
+      33,
+      36
+    ],
+    "resources": [
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference.html",
+      "https://aws.amazon.com/bedrock/pricing/",
+      "https://docs.aws.amazon.com/bedrock/latest/userguide/quotas.html"
+    ]
+  }
+]

@@ -98,7 +98,7 @@ def check_external(url, timeout=10):
         return {'url': url, 'status': 'review', 'detail': 'URL is outside the reviewed HTTPS host allowlist'}
     for method in ('HEAD', 'GET'):
         try:
-            request = Request(url, method=method, headers={'User-Agent': '36-ai-concepts-link-check/1.0'})
+            request = Request(url, method=method, headers={'User-Agent': 'ai-engineering-concepts-link-check/1.0'})
             with urlopen(request, timeout=timeout) as response:
                 code = response.status
                 return {'url': url, 'status': 'ok' if 200 <= code < 400 else 'broken', 'detail': str(code), 'final_url': response.url}

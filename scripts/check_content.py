@@ -8,19 +8,31 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from render_readme import render
+from render_readme import render, slug
 
 
 def validate(root=ROOT):
     errors = []
     items = json.loads((root / 'concepts.json').read_text())
-    if [x['id'] for x in items] != list(range(1, 37)):
-        errors.append('Catalog must contain exactly IDs 1 through 36 in order.')
-    if len({x['slug'] for x in items}) != 36 or len({x['path'] for x in items}) != 36:
+    ids = [x['id'] for x in items]
+    if (not ids or any(type(number) is not int or number < 1 for number in ids)
+            or len(set(ids)) != len(ids)):
+        errors.append('Catalog IDs must be unique positive integers; there is no fixed count.')
+    if len({x['slug'] for x in items}) != len(items) or len({x['path'] for x in items}) != len(items):
         errors.append('Slugs and paths must be unique.')
-    groups = {x['group'] for x in items}
-    if len(groups) != 6 or any(sum(x['group'] == g for x in items) != 6 for g in groups):
-        errors.append('Expected six groups of six concepts.')
+    if any(not x['group'].strip() for x in items):
+        errors.append('Each chapter needs a nonempty group.')
+    topics = json.loads((root / 'core-topics.json').read_text())
+    titles = [slug(x['title']) for x in topics]
+    if not titles or any(not title for title in titles) or len(set(titles)) != len(titles):
+        errors.append('Core topic headings must be nonempty and have unique anchors.')
+    for topic in topics:
+        chapters, resources = topic['chapters'], topic['resources']
+        if not chapters or len(set(chapters)) != len(chapters) or not set(chapters) <= set(ids):
+            errors.append(f"{topic['title']}: chapter references must be known, nonempty, and unique.")
+        if (not resources or len(set(resources)) != len(resources)
+                or any(not url.startswith('https://') for url in resources)):
+            errors.append(f"{topic['title']}: resources must be nonempty, unique HTTPS URLs.")
     expected = {x['path'] for x in items}
     actual = {str(p.relative_to(root)) for p in (root / 'concepts').glob('*.md')}
     if expected != actual:
@@ -58,5 +70,5 @@ def validate(root=ROOT):
 
 if __name__ == '__main__':
     errors = validate()
-    print('\n'.join(errors) if errors else '36 concepts, six groups, chapter structure, and README indexes passed.')
+    print('\n'.join(errors) if errors else 'Core topics, chapter structure, and README indexes passed.')
     raise SystemExit(bool(errors))

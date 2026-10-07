@@ -5,7 +5,7 @@ Use this as a review aid, not proof that a system is secure or legally compliant
 ## This learning repository
 
 - [ ] Owner has selected a license and approved public visibility, if a public release is intended
-- [ ] All 36 concept IDs, headings, local links, and generated README indexes validate
+- [ ] Core topics, stable chapter IDs, headings, local links, and generated README indexes validate
 - [ ] Resource review dates reflect actual review, especially Ollama, Bedrock, MCP, and security sources
 - [ ] Offline tests and synthetic evaluation fixtures pass
 - [ ] Any claimed live tests include runtime, model, environment, date, and result

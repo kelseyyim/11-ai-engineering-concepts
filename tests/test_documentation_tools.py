@@ -19,7 +19,7 @@ def copied_docs():
     with tempfile.TemporaryDirectory() as directory:
         root = Path(directory)
         shutil.copytree(ROOT / 'concepts', root / 'concepts')
-        for name in ('README.md', 'concepts.json'):
+        for name in ('README.md', 'concepts.json', 'core-topics.json'):
             shutil.copy(ROOT / name, root / name)
         yield root
 
@@ -128,12 +128,82 @@ class ContentTests(unittest.TestCase):
     def test_render_is_idempotent(self):
         self.assertEqual(*render())
 
-    def test_numbering_regression(self):
+    def test_duplicate_id_regression(self):
         with copied_docs() as root:
             items = json.loads((root / 'concepts.json').read_text())
-            items[35]['id'] = 37
+            items[-1]['id'] = items[0]['id']
             (root / 'concepts.json').write_text(json.dumps(items))
-            self.assertTrue(any('exactly IDs' in e for e in validate(root)))
+            self.assertTrue(any('unique positive integers' in e for e in validate(root)))
+
+    def test_catalog_size_and_groups_are_not_fixed(self):
+        with copied_docs() as root:
+            items = json.loads((root / 'concepts.json').read_text())
+            topics = json.loads((root / 'core-topics.json').read_text())
+            core_ids = {number for topic in topics for number in topic['chapters']}
+            optional = next(item for item in items if item['id'] not in core_ids)
+            items.remove(optional)
+            (root / optional['path']).unlink()
+            items[0]['group'] = 'A useful new grouping'
+            (root / 'concepts.json').write_text(json.dumps(items))
+            (root / 'README.md').write_text(render(root)[1])
+            self.assertEqual(validate(root), [])
+
+    def test_topic_count_is_not_fixed(self):
+        with copied_docs() as root:
+            topics = json.loads((root / 'core-topics.json').read_text())
+            removed = topics.pop()
+            (root / 'core-topics.json').write_text(json.dumps(topics))
+            (root / 'README.md').write_text(render(root)[1])
+            self.assertEqual(validate(root), [])
+            more = (root / 'README.md').read_text().split('<!-- BEGIN MORE -->')[1]
+            items = json.loads((root / 'concepts.json').read_text())
+            for item in items:
+                if item['id'] in removed['chapters']:
+                    self.assertIn(item['path'], more)
+
+    def test_duplicate_topic_anchor(self):
+        with copied_docs() as root:
+            topics = json.loads((root / 'core-topics.json').read_text())
+            topics[-1]['title'] = topics[0]['title'].upper() + '!'
+            (root / 'core-topics.json').write_text(json.dumps(topics))
+            self.assertTrue(any('unique anchors' in error for error in validate(root)))
+
+    def test_unknown_topic_chapter(self):
+        with copied_docs() as root:
+            topics = json.loads((root / 'core-topics.json').read_text())
+            topics[0]['chapters'].append(9999)
+            (root / 'core-topics.json').write_text(json.dumps(topics))
+            self.assertTrue(any('chapter references' in error for error in validate(root)))
+
+    def test_unreviewed_resource_cannot_enter_readme(self):
+        with copied_docs() as root:
+            topics = json.loads((root / 'core-topics.json').read_text())
+            topics[0]['resources'].append('https://example.com/unreviewed')
+            (root / 'core-topics.json').write_text(json.dumps(topics))
+            self.assertTrue(any('absent from its chapter sources' in error for error in validate(root)))
+
+    def test_duplicate_topic_resource(self):
+        with copied_docs() as root:
+            topics = json.loads((root / 'core-topics.json').read_text())
+            topics[0]['resources'].append(topics[0]['resources'][0])
+            (root / 'core-topics.json').write_text(json.dumps(topics))
+            self.assertTrue(any('unique HTTPS URLs' in error for error in validate(root)))
+
+    def test_resources_before_notes_and_labs(self):
+        readme = render()[1]
+        self.assertTrue(readme.startswith('# AI Engineering Concepts\n'))
+        topics = json.loads((ROOT / 'core-topics.json').read_text())
+        for topic in topics:
+            section = readme.split(f"## {topic['title']}\n", 1)[1].split('\n## ', 1)[0]
+            first_line = section.strip().splitlines()[0]
+            self.assertRegex(first_line, r'^- \[.+\]\(https://')
+            self.assertLess(section.index(topic['resources'][-1]), section.index('Notes and exercises:'))
+        self.assertLess(readme.index(topics[-1]['resources'][-1]), readme.index('## Hands-on labs'))
+
+    def test_every_chapter_remains_reachable(self):
+        readme = render()[1]
+        for item in json.loads((ROOT / 'concepts.json').read_text()):
+            self.assertIn(f"]({item['path']})", readme)
 
     def test_heading_regression(self):
         with copied_docs() as root:
@@ -144,7 +214,7 @@ class ContentTests(unittest.TestCase):
     def test_stale_readme(self):
         with copied_docs() as root:
             path = root / 'README.md'
-            path.write_text(path.read_text().replace('Separate the probabilistic model', 'Change the probabilistic model'))
+            path.write_text(path.read_text().replace('Hugging Face LLM course', 'A stale resource label'))
             self.assertTrue(any('indexes are stale' in e for e in validate(root)))
 
     def test_missing_markers(self):

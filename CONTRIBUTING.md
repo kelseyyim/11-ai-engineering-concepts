@@ -16,8 +16,8 @@ Read the [resource quality policy](docs/resource-policy.md). Disclose affiliatio
 
 ## Edit the source of truth
 
-1. Keep the 36 IDs stable. Propose a merge, replacement, or substantial restructuring in an issue before changing the count.
-2. Edit the concept's note in concepts/ and its metadata in concepts.json when needed.
+1. Choose core topics for practical value, not a target count. Edit core-topics.json to add, merge, reorder, or remove README topics. Each topic lists its chapter IDs and a curated subset of HTTPS resource URLs from those chapters.
+2. Edit the concept's note in concepts/ and its metadata in concepts.json when needed. Keep existing chapter IDs and paths stable so deep links continue to work; new IDs need only be unique positive integers. Chapters outside the core list appear automatically under Further reading.
 3. Include why it matters, a build exercise, a caution, and at least two relevant primary sources.
 4. Open the sources and confirm that the linked section still teaches the stated topic. Update the review date only after review.
 5. Regenerate the README's marked indexes:
@@ -26,7 +26,7 @@ Read the [resource quality policy](docs/resource-policy.md). Disclose affiliatio
 python3 scripts/render_readme.py
 ```
 
-Do not manually edit content between the generated markers in README.md. The introduction, learning paths, and community sections are ordinary editable Markdown.
+Do not manually edit content between the generated markers in README.md. The introduction, labs, and contribution sections are ordinary editable Markdown.
 
 ## Validate the change
 

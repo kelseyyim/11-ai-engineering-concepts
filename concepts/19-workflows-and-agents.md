@@ -22,7 +22,7 @@ A conversation transcript is not a complete execution record. Store what actuall
 
 ## Learn more
 
-- [Anthropic: Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) — distinguish predefined workflows from model-directed loops and choose the simplest useful pattern.
+- [Anthropic: Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) — distinguish predefined workflows from model-directed loops; read for architecture patterns, with the article's tooling-update notice in mind.
 - [LangGraph: Graph API overview](https://docs.langchain.com/oss/python/langgraph/graph-api) — learn explicit state, nodes, conditional edges, and execution limits.
 
 Resource review: 2026-10-07.

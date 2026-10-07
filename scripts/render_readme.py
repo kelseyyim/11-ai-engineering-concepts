@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the two marked README indexes from concepts.json and concept notes."""
+"""Render resource-first README indexes from core topics and concept notes."""
 import argparse
 import json
 from pathlib import Path
@@ -13,25 +13,41 @@ def slug(text):
     return re.sub(r'[^\w\s-]', '', text).replace(' ', '-')
 
 
+def resource_lines(note):
+    """Keep the reviewed resource label and description in the chapter source."""
+    section = note.split('## Learn more\n', 1)[1].split('Resource review:', 1)[0]
+    return {match.group(1): line for line in section.splitlines()
+            if (match := re.search(r'^- \[[^\]]+\]\((https://[^)]+)\)', line))}
+
+
 def render(root=ROOT):
     items = json.loads((root / 'concepts.json').read_text())
-    toc, body = [], []
-    group = None
-    for item in items:
-        if item['group'] != group:
-            group = item['group']
-            toc.extend([f"### {group}", ''])
-            body.extend([f"# {group}", ''])
-        heading = f"{item['id']}. {item['title']}"
-        toc.append(f"{item['id']}. [{item['title']}](#{slug(heading)})")
-        note = (root / item['path']).read_text()
-        resources = note.split('## Learn more\n', 1)[1].split('Resource review:', 1)[0].strip()
-        body.extend([f'## {heading}', '', item['summary'], '',
-                     f"[Explanation, exercise, and pitfalls]({item['path']})", '',
-                     '### Resources', '', resources, '', '[⬆ Back to top](#table-of-contents)', ''])
+    topics = json.loads((root / 'core-topics.json').read_text())
+    by_id = {item['id']: item for item in items}
+    toc, body, used = [], [], set()
+    for topic in topics:
+        title = topic['title']
+        toc.append(f'- [{title}](#{slug(title)})')
+        chapters = [by_id[number] for number in topic['chapters']]
+        available = {}
+        for chapter in chapters:
+            for url, line in resource_lines((root / chapter['path']).read_text()).items():
+                available.setdefault(url, line)
+        body.extend([f'## {title}', ''])
+        for url in topic['resources']:
+            if url not in available:
+                raise ValueError(f'{title}: resource is absent from its chapter sources: {url}')
+            body.append(available[url])
+        notes = ' · '.join(f"[{chapter['title']}]({chapter['path']})" for chapter in chapters)
+        body.extend(['', f'Notes and exercises: {notes}', '',
+                     '[⬆ Back to top](#table-of-contents)', ''])
+        used.update(topic['chapters'])
+    more = [f"- [{item['title']}]({item['path']})" for item in items if item['id'] not in used]
+    if not more:
+        more = ['More detailed notes and exercises are linked under each topic above.']
     original = (root / 'README.md').read_text()
     output = original
-    for label, lines in [('TOC', toc), ('CONCEPTS', body)]:
+    for label, lines in [('TOC', toc), ('CONCEPTS', body), ('MORE', more)]:
         start, end = f'<!-- BEGIN {label} -->', f'<!-- END {label} -->'
         if output.count(start) != 1 or output.count(end) != 1:
             raise ValueError(f'Expected one {label} marker pair')

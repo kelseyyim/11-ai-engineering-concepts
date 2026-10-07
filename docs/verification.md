@@ -7,10 +7,10 @@ The required validation suite uses Python's standard library. It does not instal
 - Provider examples: request construction, dry-run safety, expected response shapes, malformed output, sanitized errors, bounded SDK configuration, and transport cleanup
 - Orchestration example: tool allowlist, argument validation, trusted exact-argument approvals, read scope, citation membership, replay handling, call-ID conflicts, and step/tool budgets
 - Evaluation harness: ten synthetic cases and a negative test proving a known-bad case fails its grader
-- Repository: exactly 36 numbered concepts in six groups, useful chapter sections, reviewed-resource date fields, regenerated README indexes, local paths, and Markdown anchors
+- Repository: a variable-size core-topic index, unique stable chapter IDs, curated resource references, useful chapter sections, reviewed-resource date fields, regenerated README indexes, local paths, and Markdown anchors
 - Python source: compilation plus test coverage for documentation tooling
 
-Run all checks with python3 scripts/validate.py from any directory. Individual commands are listed in [CONTRIBUTING.md](../CONTRIBUTING.md).
+Run all checks with python3 scripts/validate.py from the repository root (or use its absolute path from another directory). Individual commands are listed in [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ## Initial build, 2026-10-07
 
