@@ -4,6 +4,8 @@
 
 This repository helps developers learn the core concepts behind AI engineering and build reliable applications with language models. Use it as a guide for further study.
 
+[Build one useful app: the practical AI engineering roadmap](ROADMAP.md)
+
 ## Community
 
 Contributions are welcome. Submit a pull request with a useful article, YouTube tutorial, or correction. If you would like to translate this list into your language, you are welcome to contribute a translation.
