@@ -6,6 +6,8 @@ This repository helps developers learn the core concepts behind AI engineering a
 
 [Build one useful app: the practical AI engineering roadmap](ROADMAP.md)
 
+[AI engineering concepts: practical learning resources](LEARNING-RESOURCES.md)
+
 ## Community
 
 Contributions are welcome. Submit a pull request with a useful article, YouTube tutorial, or correction. If you would like to translate this list into your language, you are welcome to contribute a translation.
