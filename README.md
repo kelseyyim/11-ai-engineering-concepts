@@ -46,6 +46,8 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 
 - 📜 [Text generation - Hugging Face](https://huggingface.co/docs/transformers/llm_tutorial)
 - 📜 [Byte-pair encoding - Hugging Face](https://huggingface.co/learn/llm-course/en/chapter6/5)
+- 📜 [The Illustrated GPT-2 - Jay Alammar](https://jalammar.github.io/illustrated-gpt2/)
+  — Visual explanation of decoder-only transformers, masked attention, and next-token prediction through GPT-2.
 
 ### Videos
 
@@ -60,6 +62,10 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 - 📜 [Prompting best practices - Anthropic](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)
 - 📜 [Context engineering - Anthropic](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 - 📜 [Chat templates - Hugging Face](https://huggingface.co/docs/transformers/en/chat_templating)
+- 📜 [Context Rot - Kelly Hong, Anton Troynikov, and Jeff Huber](https://www.trychroma.com/research/context-rot)
+  — Controlled experiments on context length and distractors, with reproducible code; findings depend on the tested models and tasks.
+- 📜 [Context Engineering for AI Agents - Yichao 'Peak' Ji](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
+  — Firsthand Manus lessons on stable prompt prefixes, tool availability, and retaining error context for recovery.
 
 ### Videos
 
@@ -73,6 +79,8 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 
 - 📜 [Structured model outputs - OpenAI](https://developers.openai.com/api/docs/guides/structured-outputs)
 - 📜 [Object validation - JSON Schema](https://json-schema.org/understanding-json-schema/reference/object)
+- 📜 [Coding for Structured Generation with LLMs - Will Kurt](https://blog.dottxt.ai/coding-for-structured-generation.html)
+  — Worked loop for designing regex constraints, validating examples, and inspecting generated data; uses an older Outlines API.
 
 ### Videos
 
@@ -90,6 +98,10 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 - 📜 [Chat API - Ollama](https://docs.ollama.com/api/chat)
 - 📜 [Streaming responses - Ollama](https://docs.ollama.com/api/streaming)
 - 📜 [Converse API tutorial - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference.html)
+- 📜 [Running Llama 3.3 70B locally with Ollama - Simon Willison](https://simonwillison.net/2024/Dec/9/llama-33-70b/)
+  — His local-model experiment shows Ollama setup, memory pressure on a 64 GB Mac, and checks of model behavior.
+- 📜 [A developer's guide to Bedrock's Converse API - Dennis Traub](https://builder.aws.com/content/2dtauBCeDa703x7fDS9Q30MJoBA/amazon-bedrock-converse-api-developer-guide)
+  — Worked JavaScript SDK request and response handling; check current model availability and access requirements before using the sample.
 
 ### Videos
 
@@ -106,6 +118,8 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 - 📜 [Chunking strategies - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-chunking.html)
 - 📜 [Retrieve and rerank - Sentence Transformers](https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)
 - 📜 [Grounded answers and citations - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-test-retrieve-generate.html)
+- 📜 [How to Build an Open-Domain Question Answering System? - Lilian Weng](https://lilianweng.github.io/posts/2020-10-29-odqa/)
+  — Research overview of sparse/dense retrieval and retriever-reader versus retriever-generator designs, including the original RAG formulation.
 
 ### Videos
 
@@ -121,6 +135,8 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 - 📜 [Tool-use round trip - Anthropic](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)
 - 📜 [Build an MCP server - Model Context Protocol](https://modelcontextprotocol.io/docs/2026-07-28/develop/build-server)
 - 📜 [MCP security - Model Context Protocol](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices)
+- 📜 [Your MCP Doesn't Need 30 Tools: It Needs Code - Armin Ronacher](https://lucumr.pocoo.org/2025/8/18/code-mcps/)
+  — LLDB debugger case study in tool composition, session state, and context overhead; presents the author's design tradeoffs.
 
 ### Videos
 
@@ -135,6 +151,10 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 - 📜 [Building effective agents - Anthropic](https://www.anthropic.com/engineering/building-effective-agents)
 - 📜 [Graph API - LangGraph](https://docs.langchain.com/oss/python/langgraph/graph-api)
 - 📜 [Human approval and resume - LangGraph](https://docs.langchain.com/oss/python/langgraph/interrupts)
+- 📜 [How to Build an Agent - Thorsten Ball](https://ampcode.com/notes/how-to-build-an-agent)
+  — Educational Go walkthrough of a conversation loop, tool dispatch, and file operations.
+- 📜 [LLM Powered Autonomous Agents - Lilian Weng](https://lilianweng.github.io/posts/2023-06-23-agent/)
+  — Research map of planning, memory, tool use, and failure modes; examples reflect the 2023 agent landscape.
 
 ### Videos
 
@@ -149,6 +169,8 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 ### Articles
 
 - 📜 [Demystifying evals for AI agents - Anthropic](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
+- 📜 [Your AI Product Needs Evals - Hamel Husain](https://hamel.dev/blog/posts/evals/index.html)
+  — Real-estate assistant case study connecting scoped tests, trace inspection, human review, and model grading.
 
 ### Videos
 
@@ -163,6 +185,8 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 - 📜 [Prompt-injection prevention - OWASP](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
 - 📜 [Authorization - OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
 - 📜 [Model data retention - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html)
+- 📜 [The lethal trifecta for AI agents - Simon Willison](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)
+  — Threat model and attack examples for agents combining private data, untrusted content, and external communication.
 
 ### Videos
 
@@ -177,6 +201,8 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 - 📜 [Timeouts, retries, backoff, and jitter - AWS Builders’ Library (PDF)](https://d1.awsstatic.com/builderslibrary/pdfs/timeouts-retries-and-backoff-with-jitter.pdf)
 - 📜 [Distributed traces - OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/)
 - 📜 [Model invocation logging - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html)
+- 📜 [Improving LLMs in Production With Observability - Phillip Carter](https://www.honeycomb.io/blog/improving-llms-production-observability)
+  — Firsthand Query Assistant case study using traces, errors, token counts, latency, and user feedback to diagnose production behavior.
 
 ### Videos
 
@@ -191,6 +217,8 @@ Contributions are welcome. Submit a pull request with a useful article, YouTube 
 - 📜 [Model lifecycle - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html)
 - 📜 [Prompt caching - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html)
 - 📜 [Batch inference jobs - Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-create.html)
+- 📜 [vLLM and PagedAttention - Woosuk Kwon and Zhuohan Li](https://vllm.ai/blog/2023-06-20-vllm)
+  — Explains KV-cache paging, memory sharing, and batching in a serving system; performance results describe the original benchmark setup.
 
 ### Videos
 
